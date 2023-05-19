@@ -25,6 +25,7 @@ const Wrapper = styled.nav`
     cursor: pointer;
     display: flex;
     align-items: center;
+    gap: .7rem;
   }
   background: var(--white);
   .btn-container {
@@ -78,6 +79,11 @@ const Wrapper = styled.nav`
     }
     .logo-text {
       display: block;
+    }
+  }
+  @media (max-width: 500px) {
+    .logo {
+      display: none;
     }
   }
 `
