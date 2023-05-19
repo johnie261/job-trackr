@@ -1,10 +1,21 @@
-import React from 'react'
 import Wrapper from '../assets/wrappers/BigSidebar'
+import { useSelector } from 'react-redux'
+import Logo from './Logo'
+import Navlinks from './Navlinks'
 
 const BigSidebar = () => {
+  const {isSidebarOpen} = useSelector((store) => store.user)
+
   return (
     <Wrapper>
-      <div>BigSidebar</div>
+      <div className={isSidebarOpen ? 'sidebar-container show-sidebar' : 'sidebar-container'}>
+        <div className='content'>
+          <header>
+            <Logo />
+          </header>
+          <Navlinks />
+        </div>
+      </div>
     </Wrapper>
   )
 }

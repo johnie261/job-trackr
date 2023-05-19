@@ -83,7 +83,7 @@ const Wrapper = styled.nav`
   }
   @media (max-width: 500px) {
     .logo {
-      display: none;
+      font-size: 1rem;
     }
   }
 `
