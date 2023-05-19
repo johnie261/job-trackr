@@ -1,14 +1,16 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Wrapper from '../assets/wrappers/RegisterPage'
 import { Logo, FormRow } from '../components'
 import { toast } from 'react-toastify'
 import { useDispatch, useSelector } from 'react-redux'
 import { LoginUser, RegisterUser } from '../features/users/userSlice'
+import { useNavigate } from 'react-router-dom'
 
 const Register = () => {
 
   const {user, isLoading} = useSelector((store) => store.user)
   const dispatch = useDispatch()
+  const navigate = useNavigate()
   
   const [values, setValues] = useState({
     name: "",
@@ -41,6 +43,14 @@ const Register = () => {
     setValues({...values, isMember: !values.isMember})
   }
 
+  useEffect(() => {
+    if (user) {
+      setTimeout(() => {
+        navigate('/')
+      }, 3000);
+    }
+  }, [user, navigate])
+
   return (
     <Wrapper className="full-page">
       <form className="form" onSubmit={handleSubmit}>
@@ -53,7 +63,7 @@ const Register = () => {
         <FormRow name='password' text='password' value={values.password} handleChange={handleChange}/>
 
       <button className="btn btn-block">
-        submit
+        {isLoading ? 'Loading...' : 'submit'}
       </button>
 
       <p>
